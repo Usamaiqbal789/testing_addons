@@ -1,0 +1,145 @@
+<odoo>
+    <template id="ol_internal_transfer_report_custom_view">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.basic_layout">
+                    <head>
+                        <style>
+                            body {
+                            font-family: Times New Roman;
+                            }
+                        </style>
+                    </head>
+                    <!-- Header with Company Logo -->
+                    <div class="header">
+                       <div class="row">
+                            <div class="col">
+                                <t t-if="o.epson_print">
+                                    <div style="width: 1200px; height:260px; ">
+                                    
+                                    </div>
+                                </t>
+                                <t t-else="">
+                                    <img src="/ol_custom_reports/static/src/img/images/header.png" alt="Company Logo" class="header-image"/>
+                                </t>
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <br/>
+
+                    <div style="text-align:center;">
+                        <h3>ABU FAISAL AUTO MOTIVE PARTS L.LC</h3>
+                        <h4>AUTO SPARE PARTS</h4>
+                        <h4>
+                            <u>PRODUCT TRANSFER LIST</u>
+                        </h4>
+                    </div>
+
+                    <!-- Footer with Company Logo -->
+                    <div class="footer">
+                        <div class="row">
+                            <div class="col">
+                                <!-- Add your company logo image here -->
+                                <t t-if="o.epson_print">
+                                    <t t-skip=""/>
+                                </t>
+                                <t t-else="">
+                                    <img src="/ol_custom_reports/static/src/img/images/footer.png" alt="Company Logo" style="width:100%;" class="footer-image" />
+                                </t>
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <br/>
+                    <table style="" class="container p-1">
+                        <tr>
+                            <td>
+                                <b>Transfer No : </b>
+                                <t t-esc="o.name"/>                               
+                            </td>
+                            <td>
+                                <b>Transfer Date : </b>
+                                <t t-esc="o.scheduled_date"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Transfer From :</b>
+                                <t t-esc="str(o.location_id.location_id.name)+'/'+str(o.location_id.name)"/>
+                            </td>
+                            <td>
+                                <b>Transfer To :</b>
+                                <t t-esc="str(o.location_dest_id.location_id.name)+'/'+str(o.location_dest_id.name)"/>
+                                <br/>
+                                <b>Staff :</b>
+                                <t t-esc="o.user_id.name"/>
+                                
+                            </td>
+                        </tr>
+                    </table>
+                    <br/>
+                    <br/>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>SL</th>
+                                <th>Product</th>
+                                <th>Description</th>
+                                <th>PK Details</th>
+                                <th>Quantity</th>
+                                <th>Cost</th>
+                                <th>Total Cost</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-set="sequence" t-value="1"/>
+                            <t t-set="total_qty" t-value="0"/>
+                            <t t-set="total_cost" t-value="0"/>
+                            <tr t-foreach="o.move_ids_without_package" t-as="l">
+                                <td>
+                                    <span t-esc="sequence"/>
+                                    <t t-set="sequence" t-value="sequence+1"/>
+                                </td>
+                                <td>
+                                    <t t-esc="l.product_id.default_code"/>
+                                </td>
+                                <td>
+                                    <t t-esc="l.description_picking"/>
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                <td>
+                                    <t t-esc="int(l.product_uom_qty)"/>
+                                    <t t-set="total_qty" t-value="total_qty + int(l.product_uom_qty)"/>
+                                </td>
+                                <td>
+                                    <t t-esc="round(l.product_id.standard_price,2)" t-options='{"widget": "float", "precision": 2}'/>
+                                </td>
+                                <td>
+                                    <t t-set="subtotal" t-value="l.product_id.standard_price * l.product_uom_qty"/>
+                                    <t t-esc="round(subtotal, 2)" t-options='{"widget": "float", "precision": 2}'/> <!-- This will round to 2 decimal places -->
+                                    <t t-set="total_cost" t-value="total_cost + (l.product_id.standard_price * l.product_uom_qty)"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td/>
+                                <td/>
+                                <td/>
+                                <td/>
+                                <td><t t-esc="total_qty"/></td>
+                                <td/>
+                                <td><t t-esc="round(total_cost,2)" t-options='{"widget": "float", "precision": 2}'/></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                    <h5>Remarks : </h5>
+                    <br/>
+
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

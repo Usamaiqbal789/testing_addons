@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="reconciled_account_payment" model="ir.ui.view">
+		<field name="name">account.payment.custom.field</field>
+		<field name="model">account.payment</field>
+		<field name="inherit_id" ref="account.view_account_payment_tree"/>
+		<field name="arch" type="xml">
+        
+            <xpath expr="//field[@name='batch_payment_id']" position="after">
+                <field name="reconciled_invoices_count" string="Invoice's Count" optional="show"/>
+                <!-- <field name="reconciled_bills_count" string="Bill's Count" optional="show"/> -->
+            </xpath>
+        </field>
+	</record>
+
+
+        <record id="reconciled_account_payment_Vendor" model="ir.ui.view">
+		<field name="name">account.payment.custom.field.vendor</field>
+		<field name="model">account.payment</field>
+		<field name="inherit_id" ref="account.view_account_supplier_payment_tree"/>
+		<field name="arch" type="xml">
+         <xpath expr="//field[@name='reconciled_invoices_count']" position="replace">
+                <field name="reconciled_bills_count" string="Bill's Count" optional="show"/>
+                </xpath>
+           
+        </field>
+	</record>
+
+
+
+</odoo>
+
+
+<!-- <xpath expr="//field[@name='reconciled_bills_count']" position="replace"/>
+  <xpath expr="//field[@name='reconciled_invoices_count']" position="replace"/>
+  <xpath expr="//field[@name='payment_method_line_id']" position="after">
+    <field name="payment_state" optional="show"/>
+  </xpath>
+  <xpath expr="/tree[1]/field[9]" position="after">
+    <field optional="show" name="x_studio_integer_field_wc56w"/>
+  </xpath> -->
+
+
+ <!-- <xpath expr="//field[@name='batch_payment_id']" position="after">
+                 <field name="reconciled_invoices_count" string="Invoice's Count" optional="show"/>
+                
+            </xpath> -->
+
+   

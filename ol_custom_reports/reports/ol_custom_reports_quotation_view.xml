@@ -1,0 +1,260 @@
+<odoo>
+    <template id="report_quotation">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.basic_layout">
+                    <head>
+                        <style>
+                            <!--body {-->
+                            <!--font-family: Times New Roman;-->
+                            <!--}-->
+                            .footer {
+                            position: fixed;
+                            bottom: 0;
+                            width: 100%;
+                            background-color: #fff;
+                            padding-top: 10px;
+                            border-top: 1px solid #000;
+                            font-size: 10px;
+                        }
+                        </style>
+                    </head>
+                    <!-- Header with Company Logo -->
+                    <div class="header">
+                        <div class="row">
+                            <div class="col">
+                                <t t-if="doc.epson_print">
+                                    <div style="width: 1200px; height:260px; ">
+                                    
+                                    </div>
+                                </t>
+                                <t t-else="">
+                                    <img src="/ol_custom_reports/static/src/img/images/header.png" alt="Company Logo" class="header-image"/>
+                                </t>
+                            </div>
+                        </div>
+                        <br/>
+                        <br/>
+    
+                        <div class="row">
+                            <div class="col" style="text-align: center;">
+                                <p>TRN : 100361833500003</p>
+                                <strong>
+                                    <h5 style="text-decoration: underline;">Quotation</h5>
+                                </strong>
+                            </div>
+                        </div>
+                        <div style="font-size: 11px;" class="border border-dark">
+                            <div class="row p-1">
+                                <!-- First Column for Labels -->
+                                <div class="col-2" style="margin-right:-30px;">
+                                    <strong>Customer Name:</strong><br/>
+                                    <strong>Customer TRN:</strong><br/>
+                                    <strong>Address:</strong><br/>
+                                    <strong>Telephone :</strong>
+                            
+                                    
+                                </div>
+                                <!-- Second Column for Values -->
+                                <div class="col-6" style="margin-right:0px;">
+                                    <span style="font-size: 9.3px; white-space: pre-wrap;" t-esc="doc.partner_id.name"/><br/>
+                                    <span t-esc="doc.partner_id.vat"/><br/>
+                                    <span t-esc="doc.partner_id.street"/><br/>
+                                    <span t-esc="doc.partner_id.phone"/>
+                                </div>
+                                <!-- Third Column for Blank Space -->
+                                <div class="col-4" style="width: 2em;"/>
+                                <!-- Fourth Column for  Labels -->
+                                <div class="col-2" style="margin-right:-10px;">
+                                    <strong>Quotation No:</strong><br/>
+                                    <strong>Quotation Date:</strong><br/>
+                                    <strong>Cust Ref. No:</strong>
+                                  
+                                </div>
+                                <!-- Fifth Column for Values -->
+                                <div class="col-2">
+                                    <span t-esc="doc.name"/><br/>
+                                    <span t-esc="doc.date_order"/><br/>
+                                    <!--<span t-esc="doc.name"/>-->
+                                    <!--<br/>-->
+                                    <!--<br/>-->
+                                    <!--<span t-esc="doc.origin"/>-->
+                                    <!--<span t-esc="doc.user_id.name"/>-->
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+
+                    
+
+                    <table style="font-size:11px; text-align:center; width:100%;">
+                        <thead>
+                            <tr>
+                                <th style="width:10%;">
+                                    <span>SR NO</span>
+                                </th>
+                                <t t-if="doc.print_part_no">
+                                      <th style="width:10%">PART NO</th>
+                                    </t>
+                                    <t t-else="">
+                                      <th style="width:10%">REF NO</th>
+                                    </t>
+                                <th style="width:30%;">
+                                    <span>Description</span>
+                                </th>
+                                <th style="width:10%;">
+                                    <span>QTY</span>
+                                </th>
+                                <th style="width:15%; text-align:right;">
+                                    <span>UNIT PRICE</span>
+                                </th>
+                                <th style="width:15%; text-align:right;">
+                                    <span>LINE TOTAL</span>
+                                </th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <t t-set="sequence" t-value="1"/>
+                            <tr t-foreach="doc.order_line" t-as="l">
+
+                                <td>
+                                    <span t-esc="sequence"/>
+                                    <t t-set="sequence" t-value="sequence+1"/>
+                                </td>
+                                <td>
+                                  <t t-if="doc.print_part_no">
+                                    <span t-esc="l.product_id.default_code"/>
+                                  </t>
+                                  <t t-else="">
+                                    <span t-esc="l.product_id.own_ref_no"/>
+                                  </t>
+                                </td>
+                                <td>
+                                    <span t-esc="l.name"/>
+                                </td>
+                                <td>
+                                    <span t-esc="int(l.product_uom_qty)"/>
+                                </td>
+                                <td style="text-align:right;">
+                                    <span t-esc="l.price_unit" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/>
+                                </td>
+                                <td style="text-align:right;">
+                                    <span t-esc="l.price_subtotal" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                   
+
+                    <!-- Footer with Company Logo -->
+                    <!--<footer class="border border-primary" style="padding-bottom:-300px;  height: 500px; font-size:10px;">-->
+                    <div class="footer" style="font-size:10px;">
+                        <div class="row">
+                            <div class="col">
+                    <table class="container" style="padding:5px; font-size:10px; ">
+                        <tr>
+                            <!--<td rowspan="5"><b>Remarks:</b> <span t-esc="doc.remarks"/></td>-->
+                            <td rowspan="4"/>
+
+                            <td style="text-align:right;">
+                                <b>Subtotal : </b>
+                                <span t-esc="doc.amount_untaxed" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <!--<td/>-->
+
+                            <td style="text-align:right;">
+                                <b>Discount : </b>
+                                <span t-esc="doc.amount_discount" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <!--<td/>-->
+
+                            <td style="text-align:right;">
+                                <b>Total : </b>
+                                <span t-esc="doc.discount_rate" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <!--<td/>-->
+
+                            <td style="text-align:right;">
+                                <b>VAT @5% : </b>
+                                <span t-esc="doc.amount_tax" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/>
+                            </td>
+
+                        </tr>
+                        <tr>
+                          <td><b>Remarks:</b> <span t-esc="doc.remarks"/></td>
+                            <!--<td/>-->
+                            <td style="text-align:right;">
+                                <b>Round off Adj : </b> <span t-esc="doc.amount_total" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/></td>
+                        </tr>
+                        <tr style="border-top:1px solid black; border-bottom:1px solid black">
+                            <td style="font-size:12px">
+                                <b>
+                                    TOTAL AED : </b>
+                                <span t-esc="doc.amount_in_words"/>
+                            </td>
+                            <td style="text-align:right;">
+                                <b>
+                                    Net Amount :
+                                </b>
+                                <span t-esc="doc.amount_total" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/>
+                            </td>
+
+                        </tr>
+                    </table>
+                    <div style="font-size:8px;">
+                      <t t-esc="doc.note_term"/>
+                      <t t-if="doc.print_payment_term">
+                        <t t-esc="doc.advance_payment_term"/>
+                      </t>
+                      <t t-else="">
+                        <t t-skip=""/>
+                      </t>
+                    </div>
+                    <br/>
+                    <table style="font-size:12px; width:100%;">
+                                <tr>
+                              
+                            <td style="width:90%; text-align:right; font-weight:bold;">
+                                <span>___________________</span><br/>
+                                 <span>Prepaired By</span>
+                            </td>
+                            <!--<td style="text-align:right; padding-left:900px; font-weight:bold;">-->
+                            <!--   <span>___________________</span><br/>-->
+                            <!--     <span>Recieved By</span>-->
+                            <!--</td>-->
+
+                        </tr>
+                    </table>
+                                <!-- Add your company logo image here -->
+                                <!--<img src="/ol_custom_reports/static/src/img/images/footer.png" alt="Company Logo" style="height:65px; width:100%;"/>-->
+                                <t t-if="doc.epson_print">
+                                    <t t-skip=""/>
+                                </t>
+                                <t t-else="">
+                                    <img src="/ol_custom_reports/static/src/img/images/footer.png" alt="Company Logo" style="width:100%;" class="footer-image" />
+                                </t>
+                            </div>
+                        </div>
+                    </div>
+                    <!--</footer>-->
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

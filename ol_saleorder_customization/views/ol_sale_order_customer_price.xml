@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="ol_sale_order_customer_price_total_view" model="ir.ui.view">
+        <field name="name">sale.order.customer.price.toal.view.tree</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='tax_totals_json']" position="after">
+                <field name="cus_sub_total" string="Customer Untaxed Amout" options="{'currency_field': 'currency_id'}"/>
+                <field name="cus_discount" string="Customer Discount" options="{'currency_field': 'currency_id'}"/>
+                <field name="amount_tax" string="Tax" options="{'currency_field': 'currency_id'}"/>
+            </xpath>
+            <xpath expr="//field[@name='customer_total']" position="replace">
+                <field name="cus_total" string="Customer Total" options="{'currency_field': 'currency_id'}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

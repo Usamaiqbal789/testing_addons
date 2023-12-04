@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- <record id="product_dashboard_view_customization_pricelist" model="ir.ui.view">
+            <field name="name">product.dashboard.view.customization.pricelist.tree</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='alternative_products']" position="after">
+                  <h5 style="color:##545254;text-align: center;padding-top:10Fpx;">Price Table</h5>
+                    <xpath expr="//field[@name='pricelist_ids']" position="move"/>
+                </xpath>
+            </field>
+        </record> -->
+        <record id="product_dashboard_view_customization" model="ir.ui.view">
+            <field name="name">product.dashboard.view.customization.tree</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//h5[contains(text(), 'Price Table')]" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//h5[contains(text(), 'Group Table')]" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='group_product_ids']" position="before">
+                    <h5 style="color:##545254;text-align: center;">Price Table </h5>
+                    <xpath expr="//field[@name='pricelist_ids']" position="move"/>
+                    <h5 style="color:##545254;text-align: center;">Group Table </h5>
+                </xpath>
+                
+                <xpath expr="//field[@name='uom_po_id']" position="after">
+                    <!-- <xpath expr="//field[@name='lst_price']" position="move"/> -->
+                    <!-- <xpath expr="//field[@name='standard_price']" position="move"/> -->
+                    <xpath expr="//field[@name='categ_id']" position="move"/>
+                    <xpath expr="//field[@name='des_arabic']" position="move"/>
+                    <xpath expr="//field[@name='specification']" position="move"/>
+                    <xpath expr="//field[@name='company_id']" position="move"/>
+                </xpath>
+                
+            </field>
+        </record>
+        
+    
+        <!-- <record id="product_dashboard_view_customization" model="ir.ui.view">
+            <field name="name">product.dashboard.view.customization.tree</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='invoice_date']" position="after">
+                    <field name="cus_name"  />
+                    <field name="cus_phone"  widget="phone" />
+                </xpath>
+            </field>
+        </record>  -->
+    </data>
+</odoo>
+<!-- <xpath expr="//field[@name='line_ids']/tree//field[@name='price_subtotal']" position="before"> -->

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+<template id="invoice_report_code_view" inherit_id="account.report_invoice_document">
+    <xpath expr="//div[@class='page']" position="before">
+       <span style="text-align:right; padding-left:61%; padding-top:50%;">Code: 
+        <t t-esc="o.partner_id.id"/>
+        </span>
+    </xpath>
+</template>
+
+</data>
+</odoo>

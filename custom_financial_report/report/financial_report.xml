@@ -1,0 +1,221 @@
+<odoo>
+    <template id="financial_report">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <div class="oe_structure"/>
+                    <div class="text-center">
+                        <h2>Day End Financial Report</h2>
+                        <h5>From <span t-esc="from_date"/> to <span t-esc="to_date"/></h5>
+                        <p>This report was generated on <span t-esc="current_date"/>.</p>
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <div class="col-6">
+                            <table style="width: 100%;">
+                                <tbody>
+                                    <tr>
+                                        <td style="height: 20px; padding: 5px;">Sales Cash</td>
+                                        <td style="height: 20px; padding: 5px;" class="text-right"><span t-esc="sales_cash"/> AED</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="height: 20px; padding: 5px;">Sales Credits</td>
+                                        <td style="height: 20px; padding: 5px;" class="text-right"><span t-esc="sales_credit"/> AED</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="height: 20px; padding: 5px;">Sales CreditCard</td>
+                                        <td style="height: 20px; padding: 5px;" class="text-right"><span t-esc="sales_credit_card"/> AED</td>
+                                    </tr>
+                                    <tr style="background-color: #D3D3D3;">
+                                        <td style="height: 20px; padding: 5px;">Total Sales</td>
+                                        <td style="height: 20px; padding: 5px;" class="text-right"><span t-esc="total_sales"/> AED</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-6">
+                            <table style="width: 100%;">
+                                <tbody>
+                                    <!-- <tr>
+                                        <td colspan="2" style="height: 33px;"></td>
+                                    </tr> -->
+                                    <tr>
+                                        <td style="height: 20px; padding: 5px;">Purchase Cash</td>
+                                        <td style="height: 20px; padding: 5px;" class="text-right"><span t-esc="purchase_cash"/> AED</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="height: 20px; padding: 5px;">Purchase Credits</td>
+                                        <td style="height: 20px; padding: 5px;" class="text-right"><span t-esc="purchase_credit"/> AED</td>
+                                    </tr>
+                                    <tr style="color: #ffffff">
+                                        <td colspan="2" style="height: 20px; padding: 5px;">|</td>
+                                    </tr>
+                                    <tr style="background-color: #D3D3D3;">
+                                        <td style="height: 20px; padding: 5px;">Total Purchase</td>
+                                        <td style="height: 20px; padding: 5px;" class="text-right"><span t-esc="total_purchase"/> AED</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <div class="col-6">
+                            <table style="width: 100%;">
+                                <tbody>
+                                    <tr>
+                                        <td style="height: 20px; padding: 5px;">Sales Return Cash</td>
+                                        <td style="height: 20px; padding: 5px;" class="text-right"><span t-esc="sales_return_cash"/> AED</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="height: 20px; padding: 5px;">Sales Return Credits</td>
+                                        <td style="height: 20px; padding: 5px;" class="text-right"><span t-esc="sales_return_credit"/> AED</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="height: 20px; padding: 5px;">Sales Return CreditCard</td>
+                                        <td style="height: 20px; padding: 5px;" class="text-right"><span t-esc="sales_return_credit_card"/> AED</td>
+                                    </tr>
+                                    <tr style="background-color: #D3D3D3;">
+                                        <td style="height: 20px; padding: 5px;">Total Sales Return</td>
+                                        <td style="height: 20px; padding: 5px;" class="text-right"><span t-esc="total_sales_return"/> AED</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-6">
+                            <table style="width: 100%;">
+                                <tbody>
+                                    <!-- <tr>
+                                        <td colspan="2" style="height: 33px;"></td>
+                                    </tr> -->
+                                    <tr>
+                                        <td style="height: 20px; padding: 5px;">Purchase Return Cash</td>
+                                        <td style="height: 20px; padding: 5px;" class="text-right"><span t-esc="purchase_return_cash"/> AED</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="height: 20px; padding: 5px;">Purchase Return Credits</td>
+                                        <td style="height: 20px; padding: 5px;" class="text-right"><span t-esc="purchase_return_credit"/> AED</td>
+                                    </tr>
+                                    <tr style="color: #ffffff">
+                                        <td colspan="2" style="height: 20px; padding: 5px;">|</td>
+                                    </tr>
+                                    <tr style="background-color: #D3D3D3;">
+                                        <td style="height: 20px; padding: 5px;">Total Purchase Return</td>
+                                        <td style="height: 20px; padding: 5px;" class="text-right"><span t-esc="total_purchase_return"/> AED</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-6">
+                            <table style="width: 100%;">
+                                <tbody>
+                                    <tr style="background-color: #5A5A5A; color: #ffffff">
+                                        <td style="height: 20px; padding: 5px;">Net Sales</td>
+                                        <td style="height: 20px; padding: 5px;" class="text-right"><span t-esc="net_sales"/> AED</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-6">
+                            <table style="width: 100%;">
+                                <tbody>
+                                    <tr style="background-color: #5A5A5A; color: #ffffff">
+                                        <td style="height: 20px; padding: 5px;">Net Purchase</td>
+                                        <td style="height: 20px; padding: 5px;" class="text-right"><span t-esc="net_purchase"/> AED</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                    <div class="row">
+                        <div class="col-6">
+                            <table style="width: 100%;">
+                                <tbody>
+                                    <tr>
+                                        <td style="height: 20px; padding: 5px;">Receipt Cash</td>
+                                        <td style="height: 20px; padding: 5px;" class="text-right"><span t-esc="receipt_cash"/> AED</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="height: 20px; padding: 5px;">Receipt Cheque</td>
+                                        <td style="height: 20px; padding: 5px;" class="text-right"><span t-esc="receipt_cheque"/> AED</td>
+                                    </tr>
+                                    <tr style="background-color: #D3D3D3;">
+                                        <td style="height: 20px; padding: 5px;">Total Receipt</td>
+                                        <td style="height: 20px; padding: 5px;" class="text-right"><span t-esc="total_receipt"/> AED</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-6">
+                            <table style="width: 100%;">
+                                <tbody>
+                                    <tr>
+                                        <td style="height: 20px; padding: 5px;">Payment Cash</td>
+                                        <td style="height: 20px; padding: 5px;" class="text-right"><span t-esc="payment_cash"/> AED</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="height: 20px; padding: 5px;">Payment Cheque</td>
+                                        <td style="height: 20px; padding: 5px;" class="text-right"><span t-esc="payment_cheque"/> AED</td>
+                                    </tr>
+                                    <tr style="background-color: #D3D3D3;">
+                                        <td style="height: 20px; padding: 5px;">Total Payment</td>
+                                        <td style="height: 20px; padding: 5px;" class="text-right"><span t-esc="total_payment"/> AED</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-6">
+                            <table style="width: 100%;">
+                                <tbody>
+                                    <tr>
+                                        <td style="height: 20px; padding: 5px;">VAT IN</td>
+                                        <td style="height: 20px; padding: 5px;" class="text-right"><span t-esc="vat_in"/> AED</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="height: 20px; padding: 5px;">VAT OUT</td>
+                                        <td style="height: 20px; padding: 5px;" class="text-right"><span t-esc="vat_out"/> AED</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-6">
+                            <table style="width: 100%;">
+                                <tbody>
+                                    <tr>
+                                        <td style="height: 20px; padding: 5px;">Income</td>
+                                        <td style="height: 20px; padding: 5px;" class="text-right"><span t-esc="income"/> AED</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="height: 20px; padding: 5px;">Expence</td>
+                                        <td style="height: 20px; padding: 5px;" class="text-right"><span t-esc="expence"/> AED</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-12">
+                            <table style="width: 100%;">
+                                <tbody>
+                                    <tr style="background-color: #5A5A5A; color: #ffffff">
+                                        <td style="height: 20px; padding: 5px;">Total Cash in Hand</td>
+                                        <td style="height: 20px; padding: 5px;" class="text-right"><span t-esc="cash_in_hand"/> AED</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

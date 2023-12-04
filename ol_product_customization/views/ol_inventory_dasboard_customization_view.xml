@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="inventory_dashboard_view_customization" model="ir.ui.view">
+            <field name="name">inventory.dashboard.view.customization.tree</field>
+            <field name="model">product.dashboard</field>
+            <field name="inherit_id" ref="ol_produt_custom_2.product_dashboard_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//h1[contains(text(), 'GENERAL INFORMATION')]" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                 <xpath expr="//field[@name='part_no']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='part_name']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='logs_partner_id']" position="attributes">
+                    <attribute name="domain">[('customer_rank', '=', True)]</attribute>
+                </xpath>  
+                <!-- <xpath expr="//page[@string='purchase_information']" position="replace">
+                    <page name="purchase_information" string="Foriegn Purchase Information">
+                    </page>
+                </xpath> -->
+                 <xpath expr="//field[@name='product_own_ref_no']" position="after">
+                    <xpath expr="//field[@name='own_ref_no']" position="move"/>
+                    <xpath expr="//field[@name='spec']" position="move"/>
+                    <xpath expr="//field[@name='product_description']" position="move"/>
+                    <xpath expr="//field[@name='db_detailed_type']" position="move"/>
+                    <xpath expr="//field[@name='db_origin']"  position="move"/>
+                    <xpath expr="//field[@name='product_brand']" position="move"/>
+                    <xpath expr="//field[@name='db_make_type']" position="move"/>
+                </xpath>
+                <xpath expr="//h3[contains(text(), 'Local Purchase Orders')]" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='local_puchase']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//h3[contains(text(), 'Local Purchase Orders(RFQ)')]" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='rfq_local_puchase']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

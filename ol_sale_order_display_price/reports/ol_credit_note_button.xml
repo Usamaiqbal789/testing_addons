@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <report
+    id="ol_credit_note_report_id"
+    model="account.move"
+    report_type="qweb-pdf"
+    string="Credit Note"
+    name="ol_sale_order_display_price.ol_credit_note_report_view"
+    file="ol_sale_order_display_price.ol_credit_note_report_view"
+    />
+</odoo>

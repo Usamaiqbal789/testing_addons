@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_report_parameters_form" model="ir.ui.view">
+            <field name="name">report.paramaters.form</field>
+            <field name="model">report.parameters.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="from_date"/>
+                            <field name="warehouse_dubai"/>
+                            <field name="warehouse_auh"/>
+                            <field name="warehouse_alain"/>
+                        </group>
+                        <group>
+                            <field name="to_date"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button name="action_print_custom_report" string="Print" type="object" class="btn-primary"/>
+                        <button special="cancel" string="Discard" class="btn-secondary"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    	<!-- Action -->
+        <record id="action_report_parameters" model="ir.actions.act_window">
+            <field name="name">Report Parameters</field>
+            <field name="res_model">report.parameters.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>

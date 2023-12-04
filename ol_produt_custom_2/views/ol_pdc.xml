@@ -1,0 +1,560 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="test_field_form_2" model="ir.ui.view">
+            <field name="name">test.inherit.view.form</field>
+            <field name="model">brand.custom</field>
+            <field name="arch" type="xml">
+                <form string="Group">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" required="1"/>
+                                <field name="code"/>
+                                <field name="description"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="test_tree_field_2" model="ir.ui.view">
+            <field name="name">test.inherit.view.tree</field>
+            <field name="model">brand.custom</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+        </record>
+
+
+
+        <record id="form_credent" model="ir.actions.act_window">
+            <field name="name">Group</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">brand.custom</field>
+            <field name="view_mode">tree,kanban,form</field>
+        </record>
+
+        <record id="test_field_form_3" model="ir.ui.view">
+            <field name="name">sub.group.custom.view.form</field>
+            <field name="model">sub.group.custom</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name" required="1"/>
+                            <field name="code"/>
+                            <field name="description"/>
+                            <field name="grp_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="test_tree_field_3" model="ir.ui.view">
+            <field name="name">sub.group.custom.view.tree</field>
+            <field name="model">sub.group.custom</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="form_credent_3" model="ir.actions.act_window">
+            <field name="name">Sub Group</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sub.group.custom</field>
+            <field name="view_mode">tree,kanban,form</field>
+        </record>
+
+
+
+        <record id="test_field_form_4" model="ir.ui.view">
+            <field name="name">sub.sub.group.custom.view.form</field>
+            <field name="model">sub.sub.group.custom</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name" required="1"/>
+                            <field name="code"/>
+                            <field name="description"/>
+                            <field name="grp_id"/>
+                            <field name="sub_grp_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="test_tree_field_4" model="ir.ui.view">
+            <field name="name">sub.sub.group.custom.view.tree</field>
+            <field name="model">sub.sub.group.custom</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="description"/>
+                    <field name="grp_id"/>
+                    <field name="sub_grp_id"/>
+                </tree>
+            </field>
+        </record>
+
+
+
+        <record id="form_credent_4" model="ir.actions.act_window">
+            <field name="name">Sub Sub Group</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sub.sub.group.custom</field>
+            <field name="view_mode">tree,kanban,form</field>
+        </record>
+
+
+        <record id="test_field_form_5" model="ir.ui.view">
+            <field name="name">brand.main.custom.view.form</field>
+            <field name="model">brand.main.custom</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name" required="1"/>
+                            <field name="code"/>
+                            <field name="description"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="test_tree_field_4" model="ir.ui.view">
+            <field name="name">brand.main.custom.view.tree</field>
+            <field name="model">brand.main.custom</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+        </record>
+
+
+
+        <record id="form_credent_5" model="ir.actions.act_window">
+            <field name="name">Brand</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">brand.main.custom</field>
+            <field name="view_mode">tree,kanban,form</field>
+
+        </record>
+
+        <!--        product make type-->
+        <record id="product_make_type_form_ar" model="ir.ui.view">
+            <field name="name">product.make.type.view.form</field>
+            <field name="model">product.make.type</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+
+                            <field name="name" required="1"/>
+                            <field name="code"/>
+                            <field name="description"/>
+
+                        </group>
+
+                    </sheet>
+
+                </form>
+
+            </field>
+        </record>
+
+
+        <record id="product_make_type_tree_ar" model="ir.ui.view">
+            <field name="name">product.make.type.view.tree</field>
+            <field name="model">product.make.type</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="description"/>
+                </tree>
+
+            </field>
+        </record>
+
+
+
+        <record id="action_view_product_make_type_ar" model="ir.actions.act_window">
+            <field name="name">Product Make Type</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.make.type</field>
+            <field name="view_mode">tree,kanban,form</field>
+        </record>
+
+
+
+        <!--part family-->
+        <record id="parts_family_form_ar" model="ir.ui.view">
+            <field name="name">parts.family.view.form</field>
+            <field name="model">parts.family</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name" required="1"/>
+                            <field name="code"/>
+                            <field name="description"/>
+                        </group>
+
+                    </sheet>
+
+                </form>
+
+            </field>
+        </record>
+
+
+        <record id="parts_family_tree_ar" model="ir.ui.view">
+            <field name="name">product.make.type.view.tree</field>
+            <field name="model">parts.family</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="description"/>
+                </tree>
+
+            </field>
+        </record>
+
+
+
+        <record id="action_parts_family_ar" model="ir.actions.act_window">
+            <field name="name">Parts Family</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">parts.family</field>
+            <field name="view_mode">tree,kanban,form</field>
+        </record>
+
+
+
+        <menuitem id="menu_action_ar" name="Other Information" parent="stock.menu_stock_root" sequence="100" />
+        <menuitem id="menu_action_ar_2" name="Group" parent="menu_action_ar" action="form_credent" />
+
+        <menuitem id="menu_action_ar_3" name="Sub Group" parent="menu_action_ar" action="form_credent_3" />
+        <menuitem id="menu_action_ar_4" name="Sub Sub Group" parent="menu_action_ar" action="form_credent_4" />
+        <menuitem id="menu_action_ar_5" name="Brand" parent="menu_action_ar" action="form_credent_5" />
+
+        <menuitem id="menu_action_product_make_type" name="Product Make Type" parent="menu_action_ar" action="action_view_product_make_type_ar" />
+        <menuitem id="menu_action_part_family" name="Parts Family" parent="menu_action_ar" action="action_parts_family_ar" />
+
+
+
+        <record id="view_product_template_form_img_inh" model="ir.ui.view">
+            <field name="name">Add multi images</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view" />
+            <field name="arch" type="xml">
+                <xpath expr="/form/sheet/notebook" position="inside">
+                    <page string="Images" name="multi_image">
+                        <field name="attachment_ids" string="Attachments" widget="many2many_kanban" mode="kanban"/>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="view_inherit_before_name_product_product_form">
+            <field name="name">product.product.form</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@class='oe_button_box']" position="after">
+                    <div style="margin-right: 150px;float:left">
+                        <group name="brand">
+                            <field name="brand_id"/>
+                        </group>
+                    </div>
+
+                </xpath>
+                <xpath expr="//field[@name='default_code']" position="replace">
+                </xpath>
+                <xpath expr="//field[@name='barcode']" position="replace">
+                </xpath>
+                <xpath expr="//group[@name='brand']" position="inside">
+
+                    <field name="default_code" style="margin-right: 150px;"/>
+                </xpath>
+                <xpath expr="//field[@name='default_code']" position="attributes">
+                    <attribute name="string">Part Number</attribute>
+                </xpath>
+                 <xpath expr="//field[@name='categ_id']" position="attributes">
+                    <attribute name="string">Part Family</attribute>
+                </xpath>
+
+            </field>
+        </record>
+
+
+
+        <record model="ir.ui.view" id="view_inherit_product_product_form">
+            <field name="name">product.product.form</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='categ_id']" position="after">
+
+                    <field name="grp_id" widget="many2many_tags" invisible="1"/>
+                    <field name="sub_grp_id" widget="many2many_tags" attrs="{'invisible': [('grp_id', '=', False)]}" invisible="1"/>
+                    <field name="sub_sub_grp_id" widget="many2many_tags" attrs="{'invisible': ['|',('sub_grp_id', '=', False),('grp_id', '=', False)]}" invisible="1" />
+                    <field name="des_arabic"/>
+                    <field name="specification"></field>
+                    <field name="alternate_product_warning_show" readonly="1" invisible="1"/>
+                    <field name="alternate_product_warning" readonly="1" attrs="{'invisible': [('alternate_product_warning_show','=', False)]}"/>
+
+                     <h5 style="color:##545254;text-align: center;">Group Table</h5>
+                    <field name='group_product_ids' string="Group Products" colspan="4" widget="one2many_list" nolabel="1">
+                        <tree editable='bottom'>
+                            <field name='grp_id' string='Groups'/>
+                            <field name='sub_grp_id' string='Sub Group'/>
+                            <field name='sub_sub_grp_id' string='Sub Sub Group'/>
+
+                        </tree>
+                    </field>
+
+
+                     <h5 style="color:##545254;text-align: center;">Alternative Product Table</h5>
+
+                    <field name="alternative_products" nolabel="1" colspan="4" widget="one2many_list">
+                        <tree editable="bottom" create="false" delete="false">
+<!--                            <button name="delete_product" type="object" string="Delete" class="oe_highlight"/>-->
+                            <field name="default_code" string="Part NO"/>
+                            <field name="name"/>
+                            <field name="lst_price"/>
+
+                        </tree>
+                    </field>
+
+                </xpath>
+                <xpath expr="//field[@name='uom_po_id']" position="after">
+                    <field name="oem_code"/>
+                    <field name="own_ref_no"/>
+                    <field name="origin"/>
+                    <field name="product_make_type_id"/>
+                    <h5 style="color:##545254;text-align: center;padding-top:10Fpx;">Price Table</h5>
+                    <field name='pricelist_ids' colspan="4" widget="one2many_list" nolabel="1">
+                        <tree editable='bottom'>
+                             <field name='pricelist_id' string="Branch"/>
+                            <field name='fixed_price'/>
+                            <field name='min_price' />
+                            <field name='trade_price'/>
+                            <field name='export_price'/>
+                        </tree>
+                     </field>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_inherit_product_product_tree">
+            <field name="name">product.product.tree</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_product_tree_view"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='default_code']" position="attributes">
+                    <attribute name="string">Part Number</attribute>
+                </xpath>
+                <xpath expr="//field[@name='categ_id']" position="attributes">
+                    <attribute name="string">Part Family</attribute>
+                </xpath>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="view_inherit_product_product_search">
+            <field name="name">product.product.form.search</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_search_form_view"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <xpath expr="//search" position="inside">
+                    <field name="brand_id" string="Brand"/>
+                    <field name="grp_id" string="Group"/>
+                    <field name="sub_grp_id" string="Sub Group"/>
+                    <field name="sub_sub_grp_id" string="Sub Sub Group"/>
+                </xpath>
+
+            </field>
+        </record>
+
+
+         <record model="ir.ui.view" id="view_inherit_product_form_for_button">
+            <field name="name">product.product.form</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='alternative_products']" position="after">
+                     <button name="commit_alternativeproducts" type="object" string="Add Product" class="oe_highlight"/>
+                
+                 <br/>
+                 <br/>
+
+                </xpath>
+
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_inherit_product_product_search_panel_in_tree_view">
+            <field name="name">product.product.form.search</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_search_form_view"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <xpath expr ="//search" position ="inside">
+                    <searchpanel>
+                        <field name="brand_id" string="Brand" select="multi" enable_counters="1"/>
+                        <field name="grp_id" string="Group" select="multi" enable_counters="1"/>
+                        <field name="sub_grp_id" string="Sub Group" select="multi" enable_counters="1"/>
+                        <field name="sub_sub_grp_id" string="Sub Sub Group" select="multi" enable_counters="1"/>
+                        <field name="alternative_products" string="Alernative Products" select="multi" enable_counters="1"/>
+
+                    </searchpanel>
+                </xpath>
+
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_inherit_stock_warehouse">
+            <field name="name">stock.warehouse.form</field>
+            <field name="model">stock.warehouse</field>
+            <field name="inherit_id" ref="stock.view_warehouse"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='code']" position="after">
+                    <field name="ware_type" string="Warehouse/Shop"/>
+                </xpath>
+
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="view_inherit_stock_location">
+            <field name="name">stock.location.form</field>
+            <field name="model">stock.location</field>
+            <field name="inherit_id" ref="stock.view_location_form"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='location_id']" position="after">
+                    <group>
+                        <field name="type" string="Type"/>
+                        <field name="cus_warehouse_id" invisible="1"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="view_inherit_product_pricelist_pice">
+            <field name="name">product.pricelist.form</field>
+            <field name="model">product.pricelist.item</field>
+            <field name="inherit_id" ref="product.product_pricelist_item_form_view"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='fixed_price']" position="after">
+
+                    <field name="min_price"/>
+                    <field name="trade_price"/>
+                    <field name="export_price"/>
+
+                </xpath>
+
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="view_inherit_product_pricelist_form">
+            <field name="name">product.pricelist.form</field>
+            <field name="model">product.pricelist</field>
+            <field name="inherit_id" ref="product.product_pricelist_view"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@class='oe_title']" position="after">
+                    <group>
+                        <field style="width:300px" name="warehouse_id"/>
+                    </group>
+                </xpath>
+
+            </field>
+        </record>
+
+
+    <record model="ir.ui.view" id="view_inherit_purchase_order_form_for_type">
+            <field name="name">product.order.form</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_ref']" position="after">
+                     <field  name="order_type" invisible='1' />
+                </xpath>
+            </field>
+        </record>
+
+
+
+     <record model="ir.ui.view" id="inherit_account_move_for_customamount">
+            <field name="name">account.move.form</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='price_subtotal']" position="before">
+                     <field  name="custom_amount"/>
+                </xpath>
+            </field>
+        </record>
+
+     <record model="ir.ui.view" id="inherit_account_move_line_ids_for_customamount">
+            <field name="name">account.move.form</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='line_ids']/tree//field[@name='price_subtotal']" position="before">
+                     <field  name="custom_amount" force_save="1"/>
+                </xpath>
+            </field>
+        </record>
+
+
+
+
+    </data>
+</odoo>
+
+
+
+
+
+
+
+
+

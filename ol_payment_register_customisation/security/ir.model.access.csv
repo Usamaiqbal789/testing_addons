@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access.account.payment.mode,access_ol_payment_register_customisation,ol_payment_register_customisation.model_account_payment_mode,,1,1,1,1

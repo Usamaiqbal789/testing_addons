@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+         <record id="sale_order_payment_mode_view" model="ir.ui.view">
+            <field name="name">sale.order.payment.mode.view.tree</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="payment_mode" string="Payment Mode"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="sale_order_customer_price_view" model="ir.ui.view">
+            <field name="name">sale.order.customer.price.view.tree</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page/field[@name='order_line']/tree/field[@name='product_uom_qty']" position="after">
+                    <field name="cus_unit_price" string="Customer Price"/>
+                    <field name="cus_sub_total" string="Customer Sub Total"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="sale_order_customer_price_total_view" model="ir.ui.view">
+            <field name="name">sale.order.customer.price.toal.view.tree</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='tax_totals_json']" position="after">
+                    <field name="customer_total" string="Customer Total" options="{'currency_field': 'currency_id'}"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

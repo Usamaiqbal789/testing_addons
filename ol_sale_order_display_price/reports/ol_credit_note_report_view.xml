@@ -1,0 +1,319 @@
+<odoo>
+    <template id="ol_credit_note_report_view">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.basic_layout">
+                    <head>
+                        <style>
+                            <!--body {-->
+                            <!--font-family: Times New Roman;-->
+                            <!--}-->
+                            .my-table {
+                              border: 1px solid #000; /* 1-pixel solid black border */
+                          }
+                          .my-table th, .my-table td {
+                              border: 1px solid #000; /* Apply border to table header and table data cells */
+                              padding: 5px; /* Add padding for better spacing */
+                          }
+                        </style>
+                        <style>
+                          
+                          </style>
+                    </head>
+                    <!-- Header with Company Logo -->
+                    <div class="header" >
+                        <div class="row" style="text-align:center;">
+                            <div class="col">
+                                <!-- Add your company logo image here -->
+                                <!--<img src="/ol_sale_order_display_price/static/src/img/images/header.png" alt="Company Logo" class="header-image" />-->
+                                <!--<h1>ABU FAISAL AUTO MOTIVE PARTS L.LC</h1>-->
+                                
+                                <!--<h3>AUTO PARTS STORE</h3>-->
+                                
+                               
+
+                                <img src="/ol_custom_reports/static/src/img/images/header.png" alt="Company Logo" class="header-image"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col" style="text-align: center; margin-bottom:-0.7%;">
+                                <br/><br/>
+                                <strong>
+                                    <p style=""><b>TRN : 100361833500003</b></p>
+                                    <div style="border: 1px solid #000;"/>
+                                    <!--<br/>-->
+                                    <b><h5 style="text-decoration: underline; ">Credit Note</h5></b>
+                                </strong>
+                            </div>
+                        </div>
+                        <!--<br/><br/>-->
+                           <div style="font-size: 16px;">
+                            <div class="row p-1">
+                                <!-- First Column for Labels -->
+                                <div class="col-2" style="margin-right:-30px;">
+                                  <strong>Customer Code:</strong><br/>
+                                  <strong>Customer Name:</strong><br/>
+                                  <strong>Customer TRN:</strong>
+                                </div>
+                                <!-- Second Column for Values -->
+                                <div class="col-6" style="margin-right:5px;">
+                                  <span t-esc="doc.partner_id.id"/><br/>
+                                  <span t-esc="doc.partner_id.name"/><br/>
+                                  <span t-esc="doc.partner_id.vat"/>
+                                </div>
+                                <!-- Third Column for Blank Space -->
+                                <div class="col-4" style="width: 2em;"/>
+                                <!-- Fourth Column for  Labels -->
+                                <div class="col-2" style="margin-right:-30px;">
+                                    <strong>Return No:</strong><br/>
+                                    <strong>Return Date:</strong><br/>
+                                    <strong>Bill No:</strong><br/>
+                                    <strong>Counter #:</strong><br/>
+                                    <strong>Salesman:</strong>
+                                </div>
+                                <!-- Fifth Column for Values -->
+                                <div class="col-2">
+                                    <span t-esc="doc.name"/>
+                                    <br/>
+                                    <span t-esc="doc.invoice_date"/><br/>
+                                    <t t-set="order" t-value="env['sale.order'].search([('name','=',doc.invoice_origin)])"/>
+                                     <span t-esc="order.invoice_ids.name"/> 
+                                    <br/>
+                                    <br/>
+                                    <span t-esc="doc.invoice_user_id.name"/>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <!--<br/><br/>-->
+                    </div>
+
+                    
+
+                    
+                    
+                  <br/><br/>   
+                  <div style="border:1px solid #000">
+                    <div style="height:536px;">
+                    <table class="my-table " style="border-collapse: collapse; width: 100%;  text-align:center; font-size:12px;">
+                        <thead>
+                            <tr style="border-collapse: collapse;">
+                                <th style="width:5%;">
+                                    <span>SL NO</span>
+                                </th>
+                                <th style="width:15%;">
+                                    <span>Part No</span>
+                                </th>
+                                <th style="width:25%;">
+                                    <span>Short Description</span>
+                                </th>
+                                <th style="width:5%;">
+                                    <span>Return Qty</span>
+                                </th>
+                                <th style="width:8%;">
+                                    <span>Price</span>
+                                </th>
+                                <th style="width:5%;">
+                                    <span>Disc Amt</span>
+                                </th>
+                                <th style="width:10%;">
+                                    <span>Taxable Amount</span>
+                                </th>
+                                <th style="width:5%;">
+                                    <span>VAT %</span>
+                                </th>
+                                <th style="width:6%;">
+                                    <span>VAT Amount</span>
+                                </th>
+                                <th style="width:13%;">
+                                    <span>Total Amount</span>
+                                </th>
+                            </tr>
+                        </thead>
+
+                        <tbody style="border-collapse: collapse;">
+                            <t t-set="sequence" t-value="1"/>
+                            <t t-set="subtotal" t-value="0"/>
+                            <t t-set="tax" t-value="0"/>
+                            <tr t-foreach="doc.invoice_line_ids" t-as="l">
+
+                                <td>
+                                    <span t-esc="sequence"/>
+                                    <t t-set="sequence" t-value="sequence+1"/>
+                                </td>
+                                <td style="text-align:left;">
+                                    <span t-esc="l.product_id.default_code"/>
+                                </td>
+                                <td style="text-align:left;">
+                                    <span t-esc="l.product_id.name"/>
+                                </td>
+                                <td>
+                                    <span t-esc="int(l.quantity)"/>
+                                </td>
+                                <td style="text-align:right;">
+                                    <span t-esc="l.price_unit" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/>
+                                </td>
+                                <td style="text-align:right;">
+                                    <span t-esc="l.discount" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/>
+                                </td>
+                                <td style="text-align:right;">
+                                    <span t-esc="l.quantity * l.price_unit" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/>
+                                    
+                                </td>
+                                <td style="text-align:right;">
+                                    <span t-esc="l.tax_ids.amount" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/>
+                                </td>
+                                <td style="text-align:right;">
+                                    <span t-esc="round(l.l10n_ae_vat_amount,2)" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/>
+                                    <t t-set="tax" t-value="tax +  l.l10n_ae_vat_amount"/>
+                                </td>
+                                <td style="text-align:right;">
+                                    <span t-esc="l.price_subtotal" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/>
+                                    <t t-set="subtotal" t-value="subtotal +  l.price_subtotal"/>
+                                </td>
+                            </tr>
+                        </tbody>
+                      </table>
+                      </div>
+                      
+                        </div>
+                    <div class="footer">
+                        <div>
+                          <table class="my-table" style="width: 100%; font-size:12px; text-align:right; font-weight: bold;border:1px solid #000;border-collapse: collapse;">
+                                  <tr>
+                                     <td rowspan="2" style="width:50.9%; text-align:left; border:0px; padding-left:10px;">
+                                        <!--<span style="text-align:left;">Customer Name</span><br/>-->
+                                        <!--<span style="text-align:left;"><t t-esc="doc.cus_name"/></span>-->
+                                      </td>
+                                    
+                                    
+                                      <td rowspan="4" style="width:14%;  border:0px;">
+                                        <!--<span style="text-align:right;">_________________</span><br/>-->
+                                        
+                                        <!--<span style="text-align:right;">Customer Signature</span>-->
+                                      </td>
+                                    <td style="border-collapse: collapse; width:21.8%;"><b> Sub Total : </b></td>
+          
+                                      <td style="">
+                                          <b><span t-esc="subtotal" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/></b>
+                                      </td>
+                                  </tr>
+                                  
+                                  <tr> 
+                                  <!--<td rowspan="3" style="width:50.9%; text-align:left;  border:0px;">-->
+                                  <!--      <span style="text-align:left;">Customer Name</span><br/>-->
+                                  <!--      <span style="text-align:left;"><t t-esc="doc.cus_name"/></span>-->
+                                  <!--    </td>-->
+                                    <td style="border-collapse: collapse;">
+                                      <b>Discount : </b>
+                                      
+                                    </td>
+                                    <td style=""> <b><span t-esc="l.discount" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/></b></td>
+                                  </tr>
+                                  
+                                  <tr>
+                                     <td rowspan="2" style=" text-align:left; border:0px; padding-left:10px;">
+                                       <span style="text-align:left;">Customer Name :</span>
+                                        <span style="text-align:left;"><t t-esc="doc.cus_name"/></span><br/>
+                                        <!--<span style="text-align:left;">Customer Contact No :</span>-->
+                                        <!--<span style="text-align:left;"><t t-esc="doc.cus_phone"/></span>-->
+                                      </td>                          
+                                    <td style="border-collapse: collapse;">
+                                      <b>Total Amount : </b>                            
+                                    </td>
+                                    <td style=""><b><span t-esc="subtotal - l.discount" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/></b></td>
+                                  </tr>
+                                  
+                                  <tr>
+                                    
+                                      <td style="border-collapse: collapse;">
+                                          <b>Tax : </b>
+                                          
+                                      </td>
+                                      <td style=""><b><span t-esc="round(tax,2)" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/></b></td>
+                                  </tr>
+                                  
+                                  <tr>
+                                     <td style=" text-align:left; border:0px; padding-left:10px;">
+                                       <!--<span style="text-align:left;">Customer Name :</span>-->
+                                       <!-- <span style="text-align:left;"><t t-esc="doc.cus_name"/></span><br/>-->
+                                        <span style="text-align:left;">Customer Contact No :</span>
+                                        <span style="text-align:left;"><t t-esc="doc.cus_phone"/></span>
+                                      </td>
+                                      <td style="border:0px; text-align:left">
+                                        <div style="border-bottom:1px solid #000; width:100%"/><br/>
+                                        
+                                        <span style="text-align:right;">Customer Signature</span>
+                                      </td>
+                                      <td style="border-collapse: collapse;">
+                                          <b>Bill Amount : </b>
+                                          
+                                      </td>
+                                      <td style=""><b><span t-esc="subtotal+tax" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/></b></td>
+                                  </tr>
+                                </table>
+                            </div>
+                            <br/><br/>
+                        <div class="row">
+                          <div class="col">
+                            
+                            <!-- Signature and label on the left -->
+                            <table>
+                              <tr>
+                                <td style="border:0px; text-align:left; width:89%;padding-left:30px;">
+                                  <div style="border-bottom:1px solid #000; width:13%"/>
+                              
+                                  <span style="text-align:right;">Prepared By</span>
+                                </td>
+                                <td style="border:0px; text-align:right; width:40%;">
+                                  <div style="border-bottom:1px solid #000; width:100%"/>
+                              
+                                  <span style="text-align:right;">Recieved By</span>
+                                </td>  
+                            <!--    <td>-->
+                            <!--<p style="text-align: left; ">-->
+                            <!--    ____________________-->
+                                <!--Prepared By-->
+                            <!--</p>-->
+                            <!--</td>-->
+                            <!--<td style="text-align: right; padding-left:500px;">-->
+                            <!--<p>-->
+                            <!--     ____________________-->
+                                <!--Prepared By-->
+                            <!--</p>-->
+                            <!--</td>-->
+                            <!--</tr>-->
+                            <!--<tr>-->
+                            <!--  <td>-->
+                            <!--<p style="text-align: left; ">-->
+                                <!--____________________<br/>-->
+                            <!--     Prepared By-->
+                            <!--</p>-->
+                            <!--</td>-->
+                            <!--<td style="text-align: right; padding-left:600px;">-->
+                            <!--<p style="text-align: right;">-->
+                                <!--____________________<br/>-->
+                            <!--    Received By-->
+                            <!--</p>-->
+                            <!--</td>-->
+                            </tr>
+                            </table>
+                            <!--<br/>-->
+                            <img src="/ol_sale_order_display_price/static/src/img/images/footer.png" alt="Company Logo" style="width:100%;"/>
+                        </div>
+
+                        </div>
+                    </div>
+                  
+                    
+                    
+                    <!--</div>-->
+
+                    
+
+                </t>
+            </t>
+
+        </t>
+    </template>
+</odoo>

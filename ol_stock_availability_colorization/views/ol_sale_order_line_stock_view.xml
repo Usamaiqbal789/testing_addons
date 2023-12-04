@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="sale_order_line_stock_availability_view" model="ir.ui.view">
+            <field name="name">sale.order.line.stock.availability.tree</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page/field[@name='order_line']/tree/field[@name='product_uom_qty']" position="before">
+                    <field name="check_stock" string="Stock Available" force_save="1"/>
+                </xpath>
+                <xpath expr="//page[@name='order_lines']//tree[1]" position="attributes">
+                    <attribute name="decoration-danger">(check_stock)</attribute>
+                </xpath>
+                <xpath expr="//page[@name='order_lines']//tree[1]" position="attributes">
+                    <attribute name="decoration-success">(not check_stock)</attribute>
+                </xpath>
+
+            </field>
+        </record>
+    </data>
+</odoo>

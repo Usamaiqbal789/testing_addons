@@ -1,0 +1,14 @@
+<odoo>
+    <data>
+        <!-- Action for PDF report -->
+        <record id="action_custom_financial_report" model="ir.actions.report">
+            <field name="name">Custom Financial Report</field>
+            <field name="model">report.parameters.wizard</field>
+            <field name="type">ir.actions.report</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">custom_financial_report.financial_report</field>
+            <field name="binding_model_id" ref="model_report_parameters_wizard"/>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>

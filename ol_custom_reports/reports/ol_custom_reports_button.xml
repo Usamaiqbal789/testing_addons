@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <report
+    id="ol_tax_invoice_report_custom_id"
+    model="account.move"
+    report_type="qweb-pdf"
+    string="Tax Invoice"
+    name="ol_custom_reports.ol_custom_reports_tax_invoice_view"
+    file="ol_custom_reports.ol_custom_reports_tax_invoice_view"
+    />
+
+    <report
+    id="ol_tax_invoice_cash_report_custom_id"
+    model="account.move"
+    report_type="qweb-pdf"
+    string="Tax Invoice Cash"
+    name="ol_custom_reports.ol_tax_invoice_cash_report_custom_view"
+    file="ol_custom_reports.ol_tax_invoice_cash_report_custom_view"
+    />
+
+    <report
+    id="custom_delivery_report"
+    model="stock.picking"
+    report_type="qweb-pdf"
+    string="Delivery Order"
+    name="ol_custom_reports.report_delivery"
+    file="ol_custom_reports.report_delivery"/>
+
+    <report
+    id="quotation_report"
+    model="sale.order"
+    report_type="qweb-pdf"
+    string="Quotation"
+    name="ol_custom_reports.report_quotation"
+    file="ol_custom_reports.report_quotation"/>
+
+    <report
+    id="ol_internal_transfer_report_custom_id"
+    model="stock.picking"
+    report_type="qweb-pdf"
+    string="Internal Transfer"
+    name="ol_custom_reports.ol_internal_transfer_report_custom_view"
+    file="ol_custom_reports.ol_internal_transfer_report_custom_view"/>
+
+    <report
+    id="ol_dummy_tax_report_custom_id"
+    model="account.move"
+    report_type="qweb-pdf"
+    string="Dummy Tax Invoice"
+    name="ol_custom_reports.ol_dummy_tax_invoice_custom_view"
+    file="ol_custom_reports.ol_dummy_tax_invoice_custom_view"/>
+
+
+</odoo>

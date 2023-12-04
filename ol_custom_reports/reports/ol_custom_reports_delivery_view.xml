@@ -1,0 +1,343 @@
+<odoo>
+    <template id="report_delivery">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.basic_layout">
+                    <head>
+                        <style>
+                            body {
+                            font-family: Times New Roman;
+                            }
+  
+
+                        </style>
+                    </head>
+                    <!-- Header with Company Logo -->
+                    <div class="header">
+                        <div class="row">
+                                <div class="col">
+                                    <t t-if="doc.epson_print">
+                                        <div style="width: 1200px; height:260px; ">
+                                        
+                                        </div>
+                                    </t>
+                                    <t t-else="">
+                                        <img src="/ol_custom_reports/static/src/img/images/header.png" alt="Company Logo" class="header-image"/>
+                                    </t>
+                                </div>
+                            </div>
+                        <br/>
+                        <br/>
+    
+                        <div class="row">
+                            <div class="col" style="text-align: center;">
+                                <p style="margin-bottom:-0.7%"><b>TRN : 100361833500003</b></p>
+                                <strong>
+                                    <h5 style="text-decoration: underline;">Delivery order</h5>
+                                </strong>
+                            </div>
+                        </div>
+                        <div style="font-size: 11px;" class="border border-dark">
+                            <div class="row p-1">
+                                <!-- First Column for Labels -->
+                                <div class="col-2" style="margin-right:-30px;">
+                                    <strong>Customer Name:</strong><br/>
+                                    <strong>Customer TRN:</strong><br/>
+                                    <strong>Address:</strong><br/>
+                                    <strong>Telephone :</strong>
+                            
+                                    
+                                </div>
+                                <!-- Second Column for Values -->
+                                <div class="col-6" style="margin-right:0px;">
+                                    <span style="font-size: 9.3px; white-space: pre-wrap;" t-esc="doc.partner_id.name"/><br/>
+                                    <span t-esc="doc.partner_id.vat"/><br/>
+                                    <span t-esc="doc.partner_id.street"/><br/>
+                                    <span t-esc="doc.partner_id.phone"/>
+                                </div>
+                                <!-- Third Column for Blank Space -->
+                                <div class="col-4" style="width: 2em;"/>
+                                <!-- Fourth Column for  Labels -->
+                                <div class="col-2" style="margin-right:-10px;">
+                                    <strong>Delivery Order No:</strong><br/>
+                                    <strong>Delivery Order Date:</strong><br/>
+                                    <strong>Cust Lpo No:</strong><br/>
+                                    <strong>Quotation No:</strong>
+                                </div>
+                                <!-- Fifth Column for Values -->
+                                <div class="col-2">
+                                    <span t-esc="doc.name"/><br/>
+                                    <span t-esc="doc.scheduled_date"/><br/>
+                                    <!--<span t-esc="doc.name"/>-->
+                                    <!--<br/>-->
+                                    <br/>
+                                    <span t-esc="doc.origin"/>
+                                    <!--<span t-esc="doc.user_id.name"/>-->
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                    <!-- Footer with Company Logo -->
+                    
+                    
+                     <!--<br/>-->
+                        
+
+                    <!--<div class="border border-dark">-->
+                    <!--    <div class="row p-1">-->
+                    <!--        <div class="col-4">-->
+                    <!--            <span>-->
+                    <!--                <strong>Customer Name:</strong>-->
+                    <!--                <span t-esc="doc.partner_id.name"/>-->
+                    <!--            </span>-->
+                    <!--        </div>-->
+                    <!--        <div class="col-3"/>-->
+                    <!--        <span>-->
+                    <!--            <strong>Delivery Order No:</strong>-->
+                    <!--            <span t-esc="doc.scheduled_date"/>-->
+                    <!--        </span>-->
+                    <!--        </div> -->
+                    <!--    </div>-->
+
+                    <!--    <div class="row p-1">-->
+                    <!--        <div class="col-4">-->
+                    <!--            <span>-->
+                    <!--                <strong>Customer TRN:</strong>-->
+                    <!--                <span t-esc="doc.partner_id.vat"/>-->
+                    <!--            </span>-->
+                    <!--        </div>-->
+                    <!--        <div class="col-3"/>-->
+                    <!--        <span>-->
+                    <!--            <strong>Delivery Order Date:</strong>-->
+                    <!--            <span t-esc="doc.name"/>-->
+                    <!--        </span>-->
+                    <!--        </div> -->
+                    <!--    </div>-->
+
+                    <!--    <div class="row p-1">-->
+                    <!--        <div class="col-4">-->
+                    <!--            <span>-->
+                    <!--                <strong>Address:</strong>-->
+                    <!--                <span t-esc="doc.partner_id.street"/>-->
+                    <!--            </span>-->
+                    <!--        </div>-->
+                    <!--        <div class="col-3"/>-->
+                    <!--        <span>-->
+                    <!--            <strong>Cust Lpo No:</strong>-->
+                    <!--        </span>-->
+                    <!--        </div>-->
+                    <!--    </div>-->
+
+                    <!--    <div class="row p-1">-->
+                    <!--        <div class="col-4">-->
+                    <!--            <span>-->
+                    <!--                <strong>TelePhone:</strong>-->
+                    <!--                <span t-esc="doc.partner_id.phone"/>-->
+                    <!--            </span>-->
+                    <!--        </div>-->
+                    <!--        <div class="col-3"/>-->
+                    <!--        <span>-->
+                    <!--            <strong>Quotation No:</strong>-->
+                    <!--        </span>-->
+                    <!--        </div>-->
+
+                    <!--    </div>-->
+                    <!--</div>-->
+
+
+
+                    <table class="table " style="font-size:11px; text-align:center;">
+                        <thead>
+                            <tr>
+                                <th style="width:5%;">
+                                    <span>SR NO</span>
+                                </th>
+                                <th style="width:10%;">
+                                    <span>REF NO</span>
+                                </th>
+                                <th style="width:20%;">
+                                    <span>Description</span>
+                                </th>
+                                <th style="width:5%;">
+                                    <span>QTY</span>
+                                </th>
+                                <th style="width:10%;">
+                                    <span>UNIT PRICE</span>
+                                </th>
+                                <th style="width:10%;">
+                                    <span>LINE TOTAL</span>
+                                </th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <t t-set="sequence" t-value="1"/>
+                            <t t-set="subtotal" t-value="0"/>
+                            <tr t-foreach="doc.move_ids_without_package" t-as="l">
+
+                                <td style="text-align:center;">
+                                    <span t-esc="sequence"/>
+                                    <t t-set="sequence" t-value="sequence+1"/>
+                                </td>
+                                <td>
+                                    <span t-esc="l.product_id.own_ref_no"/>
+                                </td>
+                                <td>
+                                    <span t-esc="l.description_picking"/>
+                                </td>
+                                <td>
+                                    <span t-esc="int(l.product_uom_qty)"/>
+                                </td>
+                                <td>
+                                    <span t-esc="l.unit_price/l.product_uom_qty" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/>
+                                    <!--<span t-esc="l.unit_price" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/>-->
+                                </td>
+                                <td>
+                                    <span t-esc="l.unit_price" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/>
+                                    <!--<span t-esc="l.product_uom_qty * l.unit_price" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/>-->
+                                    <t t-set="subtotal" t-value="subtotal + l.unit_price"/>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="footer" style="font-size:10px;">
+                        <div class="row">
+                            <div class="col">
+                                <table class="container">
+                                    <tr>
+                                        <td style="width:80%;">Remarks</td>
+
+                                        <td>
+                                            <b>Subtotal : </b>
+                                            <span t-esc="subtotal" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/>
+                                        </td>
+                                    </tr>
+                                    <!--<tr>-->
+                                    <!--    <td/>-->
+                                    
+                                    <!--  <td>-->
+                                    <!--    <b>Discount Amount : </b>-->
+                                    <!--    0.00-->
+                                    <!--  </td>-->
+                                    <!--</tr>-->
+                                    <tr>
+                                        <td/>
+                                    
+                                    <td>
+                                        <b>Total Amount : </b>
+                                        <span t-esc="subtotal" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/>
+                                        
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                        <td/>
+
+                                        <td>
+                                            <b>VAT @ 5%       : </b>
+                                        <span t-esc="doc.tax_amount" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/>
+                                        </td>
+
+                                    </tr>
+                                    <!--<tr>-->
+                                    <!--    <td/>-->
+                                    <!--    <td>-->
+                                    <!--        <b>Round off : </b>-->
+                                    <!--        0.00-->
+                                    <!--    </td>-->
+                                    <!--</tr>-->
+                                    <tr style="border:1px solid black">
+                                        <td style="font-size:11px">
+                                            <b>
+                                            TOTAL AED : </b>
+                                            <t t-esc="doc.amount_in_words"/>
+                                        </td>
+                                        <td>
+                                            <b>
+                                                Net Amount :
+                                            </b>
+                                            <span t-esc="doc.tax_amount + subtotal" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/>
+                                        </td>
+
+                                    </tr>
+                                </table>
+                                 <!--Add your company logo image here -->
+                                 <t t-if="doc.epson_print">
+                                    <t t-skip=""/>
+                                </t>
+                                <t t-else="">
+                                    <img src="/ol_custom_reports/static/src/img/images/footer.png" alt="Company Logo" style="width:100%;" class="footer-image" />
+                                </t>
+                                <!--<img src="/ol_custom_reports/static/src/img/images/footer.png" alt="Company Logo" class="footer-image"/>-->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!--<table class="table">-->
+                    <!--    <tr>-->
+                    <!--        <td>Remarks</td>-->
+
+                    <!--        <td>-->
+                    <!--            <b>Subtotal : </b>-->
+                    <!--            <span t-esc="subtotal"/>-->
+                    <!--        </td>-->
+                    <!--    </tr>-->
+                    <!--    <tr>-->
+                    <!--        <td/>-->
+                          
+                    <!--      <td>-->
+                    <!--        <b>Discount Amount : </b>-->
+                    <!--        0.00-->
+                    <!--      </td>-->
+                    <!--    </tr>-->
+                    <!--    <tr>-->
+                    <!--        <td/>-->
+                          
+                    <!--      <td>-->
+                    <!--        <b>Total Amount : </b>-->
+                    <!--        <span t-esc="subtotal"/>-->
+                            
+                    <!--      </td>-->
+                    <!--    </tr>-->
+                    <!--    <tr>-->
+                    <!--        <td/>-->
+
+                    <!--        <td>-->
+                    <!--            <b>VAT @ 5%       : </b>-->
+                    <!--           <span t-esc="doc.tax_amount"/>-->
+                    <!--        </td>-->
+
+                    <!--    </tr>-->
+                    <!--    <tr>-->
+                    <!--        <td/>-->
+                    <!--        <td>-->
+                    <!--            <b>Round off : </b>-->
+                    <!--            0.00-->
+                    <!--        </td>-->
+                    <!--    </tr>-->
+                    <!--    <tr style="border:1px solid black">-->
+                    <!--        <td>-->
+                    <!--            <b>-->
+                    <!--              TOTAL AED : </b>-->
+                    <!--            <t t-esc="doc.amount_in_words"/>-->
+                    <!--        </td>-->
+                    <!--        <td>-->
+                    <!--            <b>-->
+                    <!--                Net Amount :-->
+                    <!--            </b>-->
+                    <!--            <span t-esc="doc.tax_amount + subtotal"/>-->
+                    <!--        </td>-->
+
+                    <!--    </tr>-->
+                    <!--</table>-->
+
+                    
+
+                </t>
+            </t>
+
+        </t>
+    </template>
+</odoo>

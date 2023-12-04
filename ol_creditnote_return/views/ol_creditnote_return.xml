@@ -1,0 +1,23 @@
+<odoo>
+    <record id="credit_button_from_transferr" model="ir.ui.view">
+            <field name="name">sale.order.form.credit.button</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+
+
+               <div name="button_box" position="inside">
+                
+                    <button
+                        name="action_view_credit_note"
+                        class="oe_stat_button"
+                        icon="fa-edit"
+                        type="object"
+                    >
+                    <field name="credit_count" widget="statinfo" string="Credit Notes"/>
+                    </button>
+                </div>
+
+        	</field>
+		</record>
+</odoo>

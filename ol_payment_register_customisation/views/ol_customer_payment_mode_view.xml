@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="res_user_payment_mode_view" model="ir.ui.view">
+            <field name="name">res.user.payment.mode.form</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='company_id']" position="after">
+                    <field name="journal_ids" string="Journals" widget="many2many_tags"/>
+                    <field name="workflow_ids" string="Work Flow Process" widget="many2many_tags"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="res_partner_payment_mode_view" model="ir.ui.view">
+            <field name="name">res.payment.payment.mode.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='vendor_supplier_type']" position="after">
+                    <field name="payment_mode" string="Payment Mode"/>
+                </xpath>
+            </field>
+        </record>
+        <record id="res_partner_db_id_view" model="ir.ui.view">
+            <field name="name">res.partner.db.id.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='vat']" position="after">
+                    <field name="id" string="Code"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
